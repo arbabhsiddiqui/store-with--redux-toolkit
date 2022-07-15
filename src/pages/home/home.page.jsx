@@ -15,6 +15,7 @@ import brand4 from "../../assets/image/brand/brand4.png";
 import brand5 from "../../assets/image/brand/brand5.png";
 import brand6 from "../../assets/image/brand/brand6.png";
 import brand7 from "../../assets/image/brand/brand7.png";
+import Categories from "../../components/categories/categories.component";
 
 const Home = () => {
   const { isSuccess, data: products } = useProductsQuery();
@@ -32,7 +33,7 @@ const Home = () => {
           <Image src={imgArr} fluid />
         </div>
       </div>
-      <Shop />
+      <Categories />
 
       <section className="section advert">
         <div className="advert-layout container">
