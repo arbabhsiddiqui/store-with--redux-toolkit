@@ -1,7 +1,5 @@
 import axios from "axios";
 
-const API_URL = "https://fakestoreapi.com/auth/login";
-
 // login
 const login = async (userData) => {
   const res = await axios.post(`https://fakestoreapi.com/auth/login`, userData);

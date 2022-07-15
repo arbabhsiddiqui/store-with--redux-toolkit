@@ -23,7 +23,7 @@ const ProductItem = ({ product }) => {
         </ul>
       </div>
       <div className="bottom">
-        <a>{title}</a>
+        <div>{title}</div>
         <div className="price">
           <span>Rs. {price}</span>
         </div>
