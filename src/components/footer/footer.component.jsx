@@ -1,55 +1,53 @@
 const Footer = () => {
   return (
-    <footer id="footer" class="section footer">
-      <div class="container">
-        <div class="footer-container">
-          <div class="footer-center">
+    <footer id="footer" className="section footer">
+      <div className="container">
+        <div className="footer-container">
+          <div className="footer-center">
             <h3>EXTRAS</h3>
-            <a href="#">Brands</a>
-            <a href="#">Gift Certificates</a>
-            <a href="#">Affiliate</a>
-            <a href="#">Specials</a>
-            <a href="#">Site Map</a>
+            <div>Brands</div>
+            <div>Gift Certificates</div>
+            <div>Affiliate</div>
+            <div>Specials</div>
+            <div>Site Map</div>
           </div>
-          <div class="footer-center">
+          <div className="footer-center">
             <h3>INFORMATION</h3>
-            <a href="#">About Us</a>
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms & Conditions</a>
-            <a href="#">Contact Us</a>
-            <a href="#">Site Map</a>
+            <div>About Us</div>
+            <div>Privacy Policy</div>
+            <div>Terms & Conditions</div>
+            <div>Contact Us</div>
+            <div>Site Map</div>
           </div>
-          <div class="footer-center">
+          <div className="footer-center">
             <h3>MY ACCOUNT</h3>
-            <a href="#">My Account</a>
-            <a href="#">Order History</a>
-            <a href="#">Wish List</a>
-            <a href="#">Newsletter</a>
-            <a href="#">Returns</a>
+            <div>My Account</div>
+            <div>Order History</div>
+            <div>Wish List</div>
+            <div>Newsletter</div>
+            <div>Returns</div>
           </div>
-          <div class="footer-center">
+          <div className="footer-center">
             <h3>CONTACT US</h3>
             <div>
               <span>
-                <i class="fas fa-map-marker-alt"></i>
+                <i className="fas fa-map-marker-alt"></i>
               </span>
               42 Dream House, Dreammy street, 7131 Dreamville, USA
             </div>
             <div>
               <span>
-                <i class="far fa-envelope"></i>
+                <i className="far fa-envelope"></i>
               </span>
               company@gmail.com
             </div>
             <div>
               <span>
-                <i class="fas fa-phone"></i>
+                <i className="fas fa-phone"></i>
               </span>
               456-456-4512
             </div>
-            <div class="payment-methods">
-              {/* <img src={imgArr} alt="" /> */}
-            </div>
+            <div className="payment-methods"></div>
           </div>
         </div>
       </div>

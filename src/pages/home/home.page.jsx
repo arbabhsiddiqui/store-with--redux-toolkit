@@ -35,50 +35,50 @@ const Home = () => {
   const BrandObj = [brand1, brand2, brand3, brand4, brand5, brand6, brand7];
   return (
     <>
-      <div class="hero">
-        <div class="left">
+      <div className="hero">
+        <div className="left">
           <span>Exclusive Sales</span>
           <h1>UP TO 50% OFF ON SALES</h1>
           <small>Get all exclusive offers for the season</small>
-          <a href="">View Collection </a>
+          <div>View Collection </div>
         </div>
-        <div class="right">
+        <div className="right">
           <Image src={imgArr} fluid />
         </div>
       </div>
       <Shop />
 
-      <section class="section advert">
-        <div class="advert-layout container">
-          <div class="item">
+      <section className="section advert">
+        <div className="advert-layout container">
+          <div className="item">
             <Image src={promo1} alt="" className="img" />
-            <div class="content left">
+            <div className="content left">
               <span>Exclusive Sales</span>
               <h3>Spring Collections</h3>
-              <a href="">View Collection</a>
+              <div>View Collection</div>
             </div>
           </div>
-          <div class="item">
-            <Image src={promo1} alt="" class="img" />
-            <div class="content  right">
+          <div className="item">
+            <Image src={promo1} alt="" className="img" />
+            <div className="content  right">
               <span>New Trending</span>
               <h3>Designer Bags</h3>
-              <a href="">Shop Now </a>
+              <div>Shop Now </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* <!-- Products --> */}
-      <section class="section products">
-        <div class="title">
+      <section className="section products">
+        <div className="title">
           <h2>New Products</h2>
           <span>
             Select from the premium product brands and save plenty money
           </span>
         </div>
 
-        <div class="product-layout">
+        <div className="product-layout">
           {isSuccess &&
             products
               .slice(0, 8)
@@ -89,19 +89,19 @@ const Home = () => {
       </section>
 
       {/* <!-- BRANDS --> */}
-      <section class="section ">
-        <div class="brands">
-          <div class="title">
+      <section className="section ">
+        <div className="brands">
+          <div className="title">
             <h2>Shop by Brand</h2>
             <span>
               Select from the premium product brands and save plenty money
             </span>
           </div>
 
-          <div class="brand-layout container">
-            <div class="glide" id="glide1">
-              <div class="glide__track" data-glide-el="track">
-                <ul class="glide__slides">
+          <div className="brand-layout container">
+            <div className="glide" id="glide1">
+              <div className="glide__track" data-glide-el="track">
+                <ul className="glide__slides">
                   <Swiper
                     spaceBetween={50}
                     slidesPerView={3}
@@ -109,11 +109,14 @@ const Home = () => {
                     onSwiper={(swiper) => console.log(swiper)}
                     autoplay={{ delay: 3000 }}
                   >
-                    {BrandObj.map((brand) => (
-                      <SwiperSlide>
-                        <img src={brand} alt="" />
-                      </SwiperSlide>
-                    ))}
+                    {BrandObj.map((brand, i) => {
+                      i++;
+                      return (
+                        <SwiperSlide key={i}>
+                          <img src={brand} alt="" />
+                        </SwiperSlide>
+                      );
+                    })}
                   </Swiper>
                 </ul>
               </div>

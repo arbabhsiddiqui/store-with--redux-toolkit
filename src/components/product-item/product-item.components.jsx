@@ -3,28 +3,28 @@ import React from "react";
 const ProductItem = ({ product }) => {
   const { title, image, category, price, rating } = product;
   return (
-    <div class="product">
-      <div class="img-container">
+    <div className="product">
+      <div className="img-container">
         <img src={image} alt="" />
-        <div class="addCart">
-          <i class="fas fa-shopping-cart"></i>
+        <div className="addCart">
+          <i className="fas fa-shopping-cart"></i>
         </div>
 
-        <ul class="side-icons">
+        <ul className="side-icons">
           <span>
-            <i class="fas fa-search"></i>
+            <i className="fas fa-search"></i>
           </span>
           <span>
-            <i class="far fa-heart"></i>
+            <i className="far fa-heart"></i>
           </span>
           <span>
-            <i class="fas fa-sliders-h"></i>
+            <i className="fas fa-sliders-h"></i>
           </span>
         </ul>
       </div>
-      <div class="bottom">
-        <a href="">{title}</a>
-        <div class="price">
+      <div className="bottom">
+        <a>{title}</a>
+        <div className="price">
           <span>Rs. {price}</span>
         </div>
       </div>

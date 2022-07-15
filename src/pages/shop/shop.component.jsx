@@ -12,23 +12,23 @@ const Shop = () => {
 
   return (
     <div>
-      <section class="section promotion">
-        <div class="title">
+      <section className="section promotion">
+        <div className="title">
           <h2>Shop Collections</h2>
           <span>Select from the premium product and save plenty money</span>
         </div>
 
-        <div class="promotion-layout container">
+        <div className="promotion-layout container">
           {isLoading && <>Loading.....</>}
           {isFetching && <>isFetching.....</>}
           {isSuccess &&
             data.map((item, index) => {
               return (
-                <div class="promotion-item" key={index}>
+                <div className="promotion-item" key={index}>
                   <img src={promoobj[index]} alt="" />
-                  <div class="promotion-content">
+                  <div className="promotion-content">
                     <h3>{item}</h3>
-                    <a href="">SHOP NOW</a>
+                    <div>SHOP NOW</div>
                   </div>
                 </div>
               );
