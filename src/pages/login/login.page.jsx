@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { login, reset } from "../../features/auth/AuthSlice";
+import { login } from "../../features/auth/AuthSlice";
 import { useSelector, useDispatch } from "react-redux";
 const Login = () => {
   const dispatch = useDispatch();

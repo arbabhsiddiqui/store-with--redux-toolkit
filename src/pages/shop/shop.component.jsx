@@ -1,6 +1,5 @@
 import React from "react";
 import { useCategoriesQuery } from "../../features/categories/categoriesApi";
-import { useProductsQuery } from "../../features/product/productApi";
 import promo1 from "../../assets/image/promo/promo1.jpg";
 import promo2 from "../../assets/image/promo/promo2.jpg";
 import promo3 from "../../assets/image/promo/promo3.jpg";

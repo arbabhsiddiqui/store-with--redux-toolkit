@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import { Outlet, Link } from "react-router-dom";
 import Navbar from "react-bootstrap/Navbar";
 
-import { Container, Nav, NavDropdown } from "react-bootstrap";
+import { Nav } from "react-bootstrap";
 import CartImage from "../../assets/image/shoppingBag.svg";
 const Header = () => {
   return (

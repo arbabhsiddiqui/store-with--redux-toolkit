@@ -1,7 +1,7 @@
 import React from "react";
 
 const ProductItem = ({ product }) => {
-  const { title, image, category, price, rating } = product;
+  const { title, image, price } = product;
   return (
     <div className="product">
       <div className="img-container">

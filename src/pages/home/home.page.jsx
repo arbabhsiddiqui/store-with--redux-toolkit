@@ -1,12 +1,4 @@
-import {
-  Row,
-  Col,
-  Image,
-  ListGroup,
-  Card,
-  Button,
-  Form,
-} from "react-bootstrap";
+import { Image } from "react-bootstrap";
 // Import Swiper styles
 import "swiper/css/bundle";
 import Shop from "../shop/shop.component";
@@ -25,13 +17,7 @@ import brand6 from "../../assets/image/brand/brand6.png";
 import brand7 from "../../assets/image/brand/brand7.png";
 
 const Home = () => {
-  const {
-    isLoading,
-    isFetching,
-    isSuccess,
-    data: products,
-    isError,
-  } = useProductsQuery();
+  const { isSuccess, data: products } = useProductsQuery();
   const BrandObj = [brand1, brand2, brand3, brand4, brand5, brand6, brand7];
   return (
     <>
