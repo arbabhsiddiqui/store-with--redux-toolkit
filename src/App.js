@@ -1,10 +1,16 @@
 import { Routes, Route } from "react-router-dom";
-import Header from "./components/header/header.component";
-import Home from "./pages/home/home.page";
-import Shop from "./pages/shop/shop.component";
-
 import SwiperCore, { Autoplay } from "swiper";
 import "swiper/css/bundle";
+
+// components
+import Header from "./components/header/header.component";
+
+// pages
+import Home from "./pages/home/home.page";
+import Shop from "./pages/shop/shop.component";
+import About from "./pages/about/about.page";
+import Contact from "./pages/contact/contact.page";
+
 function App() {
   SwiperCore.use([Autoplay]);
   return (
@@ -12,6 +18,8 @@ function App() {
       <Route path="/" element={<Header />}>
         <Route index element={<Home />} />
         <Route path="/shop" element={<Shop />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
       </Route>
     </Routes>
   );

@@ -1,13 +1,14 @@
 import { Image } from "react-bootstrap";
 // Import Swiper styles
 import "swiper/css/bundle";
+import { Swiper, SwiperSlide } from "swiper/react";
+
 import Shop from "../shop/shop.component";
 import imgArr from "../../assets/image/hero.png";
 import promo1 from "../../assets/image/promo/promo1.jpg";
 import { useProductsQuery } from "../../features/product/productApi";
 import ProductItem from "../../components/product-item/product-item.components";
 import Footer from "../../components/footer/footer.component";
-import { Swiper, SwiperSlide } from "swiper/react";
 import brand1 from "../../assets/image/brand/brand1.png";
 import brand2 from "../../assets/image/brand/brand2.png";
 import brand3 from "../../assets/image/brand/brand3.png";
@@ -112,9 +113,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* <!-- Footer --> */}
       <Footer />
-      {/* <!-- End Footer --> */}
     </>
   );
 };

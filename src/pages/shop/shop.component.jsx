@@ -1,6 +1,7 @@
 import React from "react";
 import { useProductsQuery } from "../../features/product/productApi";
 import ProductItem from "../../components/product-item/product-item.components";
+import "./shop.styles.css";
 const Shop = () => {
   const {
     data: products,

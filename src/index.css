@@ -441,11 +441,12 @@ nav .wrapper {
 .products .product .img-container {
   position: relative;
   cursor: pointer;
+  height: 300px;
+  width: 300px;
 }
 
 .products .product .img-container img {
-  -o-object-fit: cover;
-  object-fit: cover;
+  object-fit: contain;
   height: 100%;
   width: 100%;
 }

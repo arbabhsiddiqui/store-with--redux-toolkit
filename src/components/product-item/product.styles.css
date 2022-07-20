@@ -1,0 +1,138 @@
+.product {
+  padding: 3rem 0 1rem 0 !important;
+}
+
+.product.title {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.product.title h2 {
+  font-size: 3rem;
+  font-weight: 400;
+  margin-bottom: 1.5rem;
+}
+
+.product.title span {
+  color: #828282;
+}
+
+.product.product-layout {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(25rem, 1fr)) [auto-fit];
+  grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+  gap: 3rem;
+  max-width: 130rem;
+  margin: 0 auto;
+  padding: 0 1.6rem;
+}
+
+.product.product {
+  overflow: hidden;
+}
+
+.product.product .img-container {
+  position: relative;
+  cursor: pointer;
+  height: 300px;
+  width: 300px;
+}
+
+.product.product .img-container img {
+  object-fit: contain;
+  height: 100%;
+  width: 100%;
+}
+
+.product.product .bottom {
+  padding: 1rem;
+  text-align: center;
+  margin-left: -30px !important;
+}
+
+.product.product .bottom a {
+  margin-bottom: 1rem;
+  font-weight: inherit;
+  font-size: 1.5rem;
+}
+
+.product.product .bottom a:hover {
+  color: #ff4545;
+}
+
+.product.product .bottom span {
+  color: #ff4545;
+  font-size: 1.8rem;
+}
+
+.product.product .bottom .cancel {
+  font-size: 1.4rem;
+  color: #828282;
+  text-decoration: line-through;
+}
+
+.product.product .addCart {
+  position: absolute;
+  right: 0;
+  bottom: 0.6rem;
+  background-color: #fff;
+  border-radius: 50%;
+  padding: 1.3rem 1.6rem;
+  -webkit-box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+  -webkit-transition: all 100ms ease-in-out;
+  transition: all 100ms ease-in-out;
+}
+
+.product.product .addCart:hover {
+  background-color: #ff4545;
+  color: #fff;
+}
+
+.product.product:hover .addCart {
+  border-radius: 1rem 0 0 0;
+}
+
+.product.product:hover .side-icons {
+  -webkit-transform: translate(0%, -50%);
+  transform: translate(0%, -50%);
+}
+
+.product.product i {
+  -webkit-transition: all 100ms ease-in-out;
+  transition: all 100ms ease-in-out;
+}
+
+.product.product .side-icons {
+  position: absolute;
+  right: 0;
+  top: 30%;
+  -webkit-transform: translate(80%, -50%);
+  transform: translate(80%, -50%);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  padding: 1rem;
+  -webkit-transition: all 100ms ease-in-out;
+  transition: all 100ms ease-in-out;
+}
+
+.product.product .side-icons span {
+  font-size: 1.4rem;
+  background-color: #fff;
+  margin: 0.3rem;
+  padding: 1rem 1.3rem;
+  border-radius: 50%;
+  -webkit-transition: all 100ms ease-in-out;
+  transition: all 100ms ease-in-out;
+}
+
+.product.product .side-icons span:hover {
+  background-color: #ff4545;
+  color: #fff;
+}
