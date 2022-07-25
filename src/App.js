@@ -10,6 +10,7 @@ import Home from "./pages/home/home.page";
 import Shop from "./pages/shop/shop.component";
 import About from "./pages/about/about.page";
 import Contact from "./pages/contact/contact.page";
+import Login from "./pages/login/login.page";
 
 function App() {
   SwiperCore.use([Autoplay]);
@@ -20,6 +21,7 @@ function App() {
         <Route path="/shop" element={<Shop />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/login" element={<Login />} />
       </Route>
     </Routes>
   );

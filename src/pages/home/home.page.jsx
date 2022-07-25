@@ -3,7 +3,6 @@ import { Image } from "react-bootstrap";
 import "swiper/css/bundle";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import Shop from "../shop/shop.component";
 import imgArr from "../../assets/image/hero.png";
 import promo1 from "../../assets/image/promo/promo1.jpg";
 import { useProductsQuery } from "../../features/product/productApi";
@@ -93,9 +92,8 @@ const Home = () => {
                   <Swiper
                     spaceBetween={50}
                     slidesPerView={3}
-                    onSlideChange={() => console.log("slide change")}
-                    onSwiper={(swiper) => console.log(swiper)}
-                    autoplay={{ delay: 3000 }}
+                    autoplay={{ delay: 1500 }}
+                    loop
                   >
                     {BrandObj.map((brand, i) => {
                       i++;

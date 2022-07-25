@@ -1,10 +1,23 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
 import { Outlet, Link } from "react-router-dom";
 import Navbar from "react-bootstrap/Navbar";
+import { useSelector, useDispatch } from "react-redux";
 
-import { Nav } from "react-bootstrap";
+import { logout } from "../../features/auth/AuthSlice";
+import { Nav, NavDropdown } from "react-bootstrap";
 import CartImage from "../../assets/image/shoppingBag.svg";
 const Header = () => {
+  const dispatch = useDispatch();
+
+  const { user } = useSelector((state) => state.auth);
+
+  useEffect(() => {}, [user]);
+
+  const logoutHandler = (e) => {
+    e.preventDefault();
+    dispatch(logout());
+  };
+
   return (
     <Fragment>
       <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
@@ -37,7 +50,20 @@ const Header = () => {
                 </div>
               </Nav.Link>
 
-              {/* todo:user profile */}
+              {user ? (
+                <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
+                  <NavDropdown.Item href="#action/3.2">
+                    Another action
+                  </NavDropdown.Item>
+                  <NavDropdown.Item onClick={logoutHandler}>
+                    Logout
+                  </NavDropdown.Item>
+                </NavDropdown>
+              ) : (
+                <Nav.Link as={Link} to="/login">
+                  Login
+                </Nav.Link>
+              )}
               {/* <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
                 <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">
