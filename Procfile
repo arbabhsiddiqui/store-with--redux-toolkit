@@ -1,1 +1,1 @@
-web: node backend/server.js --port=$PORT
+web: node backend/server.js 

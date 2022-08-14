@@ -25,10 +25,6 @@ app.use(express.json());
 dotenv.config();
 connectDB();
 
-app.get("/", (req, res) => {
-  res.send("Api Start Working");
-});
-
 app.use("/api/config/paypal", (req, res) =>
   res.send(process.env.PAYPAL_CLIENT_ID)
 );
