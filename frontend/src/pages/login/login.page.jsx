@@ -17,9 +17,9 @@ const Login = () => {
   const dispatch = useDispatch();
   const [userLogin, { isSuccess, data, isError, error }] =
     useUserLoginMutation();
+  const { user } = useSelector((state) => state.auth);
   if (isSuccess) {
-    console.log(data);
-    let user = dispatch(
+    dispatch(
       setUser({
         name: data.name,
         email: data.email,
@@ -31,13 +31,16 @@ const Login = () => {
     localStorage.setItem("user", JSON.stringify(data));
   }
 
-  if (isError) {
-    console.log(error);
-  }
+  useEffect(() => {
+    if (user) {
+      navigate("/");
+    }
+  }, [user]);
 
   const submitHandler = async (e) => {
     e.preventDefault();
     await userLogin({ email: userName, password });
+    navigate("/");
   };
 
   return (
