@@ -7,7 +7,7 @@ const ProductItem = ({ product }) => {
   return (
     <div className="product">
       <div className="img-container">
-        <img src={`http://localhost:5000${image}`} alt="" />
+        <img src={`http://localhost:3000${image}`} alt="" />
         <div className="addCart">
           <i className="fas fa-shopping-cart"></i>
         </div>

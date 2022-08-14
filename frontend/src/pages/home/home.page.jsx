@@ -20,7 +20,7 @@ import Categories from "../../components/categories/categories.component";
 const Home = () => {
   const { isSuccess, data: products } = useProductsQuery();
   const BrandObj = [brand1, brand2, brand3, brand4, brand5, brand6, brand7];
-  console.log(products);
+
   return (
     <>
       <div className="hero">
@@ -71,7 +71,7 @@ const Home = () => {
             products.products
               .slice(0, 8)
               .map((product) => (
-                <ProductItem key={product.id} product={product} />
+                <ProductItem key={product._id} product={product} />
               ))}
         </div>
       </section>
@@ -111,8 +111,6 @@ const Home = () => {
           </div>
         </div>
       </section>
-
-      <Footer />
     </>
   );
 };

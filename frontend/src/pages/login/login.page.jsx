@@ -1,32 +1,43 @@
 import { useEffect, useState } from "react";
-import { loginApi, reset } from "../../features/auth/AuthSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Row, Col, Form, Button, Card } from "react-bootstrap";
 import "./login.styles.css";
+
+// user api hook
+
+import { useUserLoginMutation } from "../../features/user/userApi";
+import { setUser } from "../../features/user/authSlice";
+
 const Login = () => {
-  const [userName, setUserName] = useState("mor_2314");
-  const [password, setPassword] = useState("83r5^_");
+  const [userName, setUserName] = useState("zaid@gmail.com");
+  const [password, setPassword] = useState("123456");
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [userLogin, { isSuccess, data, isError, error }] =
+    useUserLoginMutation();
+  if (isSuccess) {
+    console.log(data);
+    let user = dispatch(
+      setUser({
+        name: data.name,
+        email: data.email,
+        token: data.token,
+        _id: data._id,
+        isAdmin: data.isAdmin,
+      })
+    );
+    localStorage.setItem("user", JSON.stringify(data));
+  }
 
-  const { isSuccess, user, isError } = useSelector((state) => state.auth);
+  if (isError) {
+    console.log(error);
+  }
 
-  useEffect(() => {
-    if (isError) {
-    }
-
-    if (isSuccess || user) {
-      navigate("/");
-    }
-
-    dispatch(reset());
-  }, [user, isError, isSuccess, navigate, dispatch]);
-
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
-    dispatch(loginApi({ username: userName, password: password }));
+    await userLogin({ email: userName, password });
   };
 
   return (
@@ -35,7 +46,7 @@ const Login = () => {
         <Col xs={8}>
           <Card>
             <Card.Body>
-              {isSuccess && user.token}
+              {isError && <>{error.data.message}</>}
               <Form onSubmit={submitHandler}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                   <Form.Label>UserName</Form.Label>
