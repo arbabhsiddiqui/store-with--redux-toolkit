@@ -10,26 +10,13 @@ import { useUserLoginMutation } from "../../features/user/userApi";
 import { setUser } from "../../features/user/authSlice";
 
 const Login = () => {
-  const [userName, setUserName] = useState("zaid@gmail.com");
+  const [userName, setUserName] = useState("zackh41@gmail.com");
   const [password, setPassword] = useState("123456");
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [userLogin, { isSuccess, data, isError, error }] =
-    useUserLoginMutation();
+  const [userLogin, { isError, error }] = useUserLoginMutation();
   const { user } = useSelector((state) => state.auth);
-  if (isSuccess) {
-    dispatch(
-      setUser({
-        name: data.name,
-        email: data.email,
-        token: data.token,
-        _id: data._id,
-        isAdmin: data.isAdmin,
-      })
-    );
-    localStorage.setItem("user", JSON.stringify(data));
-  }
 
   useEffect(() => {
     if (user) {
@@ -39,8 +26,21 @@ const Login = () => {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    await userLogin({ email: userName, password });
-    navigate("/");
+    let res = await userLogin({ email: userName, password });
+
+    if (res.data) {
+      dispatch(
+        setUser({
+          name: res.data.name,
+          email: res.data.email,
+          token: res.data.token,
+          _id: res.data._id,
+          isAdmin: res.data.isAdmin,
+        })
+      );
+      localStorage.setItem("user", JSON.stringify(res.data));
+      navigate("/");
+    }
   };
 
   return (

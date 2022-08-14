@@ -9,8 +9,7 @@ const Shop = () => {
     isFetching,
     isSuccess,
   } = useProductsQuery();
-  console.log("proudts", products);
-  console.log("isSuccess", isSuccess);
+
   return (
     <div>
       <section className="section promotion">
@@ -24,7 +23,7 @@ const Shop = () => {
           {isFetching && <>isFetching.....</>}
           {isSuccess &&
             products.products.map((product) => {
-              return <ProductItem key={product.id} product={product} />;
+              return <ProductItem key={product._id} product={product} />;
             })}
         </div>
       </section>

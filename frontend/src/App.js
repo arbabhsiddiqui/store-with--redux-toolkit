@@ -5,8 +5,8 @@ import "swiper/css/bundle";
 // components
 import Layout from "./components/layout/layout.component";
 import RequireAuth from "./components/require-auth/require-auth.component";
-import RequireAdmin from "./components/require-admin/require-admin.component";
 
+import RequireAdmin from "./components/require-admin/require-admin.component";
 // pages
 import Home from "./pages/home/home.page";
 import Shop from "./pages/shop/shop.component";

@@ -77,8 +77,6 @@ const About = () => {
                   <Swiper
                     spaceBetween={50}
                     slidesPerView={3}
-                    onSlideChange={() => console.log("slide change")}
-                    onSwiper={(swiper) => console.log(swiper)}
                     autoplay={{ delay: 3000 }}
                   >
                     {teamObj.map((team, i) => {
