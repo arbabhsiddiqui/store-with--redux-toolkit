@@ -2092,3 +2092,14 @@ textarea:focus {
     height: 6rem;
   }
 }
+
+.btn-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.ch-100 {
+  min-height: 70vh;
+}

@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
+const user = JSON.parse(localStorage.getItem("user"));
 // Define a service using a base URL and expected endpoints
 export const productApi = createApi({
   reducerPath: "productApi",
@@ -16,6 +17,10 @@ export const productApi = createApi({
         url: "products",
         method: "POST",
         body: JSON.stringify(product),
+        headers: {
+          // 'content-type': 'Json/plain',
+          authorization: `Bearer ${user.token}`,
+        },
       }),
     }),
     UpdateProduct: builder.mutation({
