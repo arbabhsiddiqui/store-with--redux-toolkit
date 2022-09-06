@@ -4,10 +4,15 @@ import "./product.styles.css";
 
 const ProductItem = ({ product }) => {
   const { title, image, price } = product;
+  const locationCheck = image.match(/http/);
+  console.log(locationCheck);
   return (
     <div className="product">
       <div className="img-container">
-        <img src={`http://localhost:3000${image}`} alt="" />
+        <img
+          src={!locationCheck ? `  http://localhost:3000${image}` : image}
+          alt=""
+        />
         <div className="addCart">
           <i className="fas fa-shopping-cart"></i>
         </div>

@@ -1,60 +1,174 @@
-import React from "react";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
+import { useNavigate, useLocation } from "react-router-dom";
 
-import { useAddProductMutation } from "../../../features/product/productApi";
+// api hook import
+import {
+  useAddProductMutation,
+  useUpdateProductMutation,
+} from "../../../features/product/productApi";
 
 const ProductForm = () => {
-  const [title, setTitle] = useState("");
-  const [price, setPrice] = useState("");
-  const [description, setDescription] = useState("");
-  const [category, setCategory] = useState("");
-  const [img, setImg] = useState("");
+  // const
+  const navigate = useNavigate();
+  const location = useLocation();
 
-  const [AddProduct, { isError, isLoading, isSuccess, data, error, message }] =
-    useAddProductMutation();
+  // state
+  const [name, setName] = useState("Name");
+  const [brand, setBrand] = useState("Name");
+  const [countInStock, setCountInStock] = useState(5);
+  const [price, setPrice] = useState("price");
+  const [description, setDescription] = useState("description");
+  const [category, setCategory] = useState("category");
+  const [image, setImage] = useState("img");
+  const [btnText, setBtnText] = useState("Add");
 
+  // api hooks
+  const [
+    AddProduct,
+    {
+      isError: isAddError,
+      isLoading: isAddLoading,
+      isSuccess: isAddSuccess,
+      data: addSuccess,
+      error: addError,
+    },
+  ] = useAddProductMutation();
+  const [
+    UpdateProduct,
+    {
+      isError: isUpdateError,
+      isLoading: isUpdateLoading,
+      isSuccess: isUpdateSuccess,
+      data: updateSuccess,
+      error: updateError,
+    },
+  ] = useUpdateProductMutation();
+
+  // page load event
+  useEffect(() => {
+    if (location.state) {
+      setName(location.state.name);
+      setPrice(location.state.price);
+      setCategory(location.state.category);
+      setBrand(location.state.brand);
+      setCountInStock(location.state.countInStock);
+      setDescription(location.state.description);
+      setImage(location.state.image);
+      setBtnText("update");
+    }
+  }, []);
+
+  // handle function
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("click", {
-      title,
-      price,
-      description,
-      category,
-      img,
-    });
-    let product = {
-      title,
-      price,
-      description,
-      category,
-      img,
-    };
 
-    await AddProduct(product);
+    if (location.state) {
+      await UpdateProduct({
+        _id: location.state._id,
+        name,
+        price,
+        description,
+        category,
+        image,
+        brand,
+        countInStock,
+      });
+    } else {
+      await AddProduct({
+        name,
+        price,
+        description,
+        category,
+        image,
+        brand,
+        countInStock,
+      });
+    }
+
+    console.log({
+      name,
+      price,
+      description,
+      category,
+      image,
+      brand,
+      countInStock,
+    });
   };
 
   return (
     <div className="container ch-100">
       <div className="row  mt-5">
         <div className="col-6 py-3 mx-auto">
-          {isError && <>{error}</>}
-          {isSuccess && <>{data.id && "Product Added Successfully"}</>}
+          {/* add */}
+          {isAddError && <h1>Add Error</h1>}
+          {isAddSuccess && <>Product Added Successfully</>}
+          {/* update */}
+          {isUpdateError && <h1>Update Error</h1>}
+          {isUpdateSuccess && <>Product Update Successfully</>}
+          <div
+            className="btn btn-primary mb-3"
+            onClick={() => {
+              navigate(-1);
+            }}
+          >
+            Back
+          </div>
           <form onSubmit={handleSubmit}>
             {/* item  */}
             <div className="row">
               <div className="col-6">
                 <div className="mb-3">
                   <label htmlFor="formGroupExampleInput" className="form-label">
-                    Product Title
+                    Product Name
                   </label>
                   <input
                     type="text"
                     className="form-control"
                     placeholder="Please Enter Product Title"
-                    value={title}
+                    value={name}
                     onChange={(e) => {
-                      setTitle(e.target.value);
+                      setName(e.target.value);
+                    }}
+                  />
+                </div>
+              </div>
+              <div className="col-6">
+                <div className="mb-3">
+                  <label
+                    htmlFor="formGroupExampleInput2"
+                    className="form-label"
+                  >
+                    Product Category
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="formGroupExampleInput2"
+                    placeholder="Product Price"
+                    value={category}
+                    onChange={(e) => {
+                      setCategory(e.target.value);
+                    }}
+                  />
+                </div>
+              </div>
+            </div>
+            {/* item  */}
+            <div className="row">
+              <div className="col-6">
+                <div className="mb-3">
+                  <label htmlFor="formGroupExampleInput" className="form-label">
+                    Product Brand
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Please Enter Product Title"
+                    value={brand}
+                    onChange={(e) => {
+                      setBrand(e.target.value);
                     }}
                   />
                 </div>
@@ -68,7 +182,7 @@ const ProductForm = () => {
                     Product Price
                   </label>
                   <input
-                    type="number"
+                    type="text"
                     className="form-control"
                     id="formGroupExampleInput2"
                     placeholder="Product Price"
@@ -80,7 +194,7 @@ const ProductForm = () => {
                 </div>
               </div>
             </div>
-
+            {/* item  */}
             <div className="row">
               <div className="col-6">
                 <div className="mb-3">
@@ -88,16 +202,16 @@ const ProductForm = () => {
                     htmlFor="formGroupExampleInput2"
                     className="form-label"
                   >
-                    Product Price
+                    Product In Stock
                   </label>
                   <input
                     type="text"
                     className="form-control"
                     id="formGroupExampleInput2"
-                    placeholder="Category"
-                    value={category}
+                    placeholder="Product In Stock"
+                    value={countInStock}
                     onChange={(e) => {
-                      setCategory(e.target.value);
+                      setCountInStock(e.target.value);
                     }}
                   />
                 </div>
@@ -108,22 +222,22 @@ const ProductForm = () => {
                     htmlFor="formGroupExampleInput2"
                     className="form-label"
                   >
-                    Product Price
+                    Product Image
                   </label>
                   <input
                     type="text"
                     className="form-control"
                     id="formGroupExampleInput2"
                     placeholder="image url"
-                    value={img}
+                    value={image}
                     onChange={(e) => {
-                      setImg(e.target.value);
+                      setImage(e.target.value);
                     }}
                   />
                 </div>
               </div>
             </div>
-
+            {/* item  */}
             <div className="row">
               <div className="col-12">
                 <div className="mb-3">
@@ -144,7 +258,7 @@ const ProductForm = () => {
             </div>
 
             <Button variant="primary" type="submit">
-              Add
+              {btnText}
             </Button>
           </form>
         </div>
